@@ -17,6 +17,13 @@
             padding: 20px;
             text-align: center;
         }
+        header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
         nav {
             display: flex;
             justify-content: center;
@@ -32,10 +39,29 @@
             background-color: #ddd;
             color: black;
         }
-        section {
+        .content {
+            display: none;
             padding: 20px;
             max-width: 800px;
             margin: auto;
+        }
+        .content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
         }
         footer {
             text-align: center;
@@ -46,63 +72,135 @@
             bottom: 0;
             width: 100%;
         }
-        .skills-list, .projects-list {
-            list-style: none;
-            padding: 0;
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
         }
-        .skills-list li, .projects-list li {
-            padding: 5px 0;
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
+    <script>
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+
+        window.onload = function() {
+            showContent('home'); // Show the home section by default
+        };
+    </script>
 </head>
 <body>
 
 <header>
     <h1>Amira Nowier</h1>
     <p>Senior Researcher in Animal Biotechnology</p>
+    <img src="profile.jpg" alt="Amira Nowier Profile Picture">
 </header>
 
 <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#" onclick="showContent('home')">Home</a>
+    <a href="#" onclick="showContent('about')">About</a>
+    <a href="#" onclick="showContent('skills')">Skills</a>
+    <a href="#" onclick="showContent('projects')">Projects</a>
+    <a href="#" onclick="showContent('contact')">Contact</a>
 </nav>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>I am a Senior Researcher with over 20 years of expertise in animal biotechnology and genetics. My work includes leading research projects, collaborating with international institutions, and publishing extensively in peer-reviewed journals. I specialize in molecular genetic techniques, bioinformatics workflows, and mentoring postgraduate researchers.</p>
-</section>
+<div id="home" class="content active">
+    <h2>Welcome to Amira Nowier’s Portfolio</h2>
+    <p>Explore my work, skills, and contributions to animal biotechnology and genetics.</p>
+</div>
 
-<section id="skills">
+<div id="about" class="content">
+    <h2>About Amira Nowier</h2>
+    <p>I am a Senior Researcher in Animal Biotechnology with over two decades of expertise in molecular genetics, bioinformatics, and animal breeding. My work bridges cutting-edge research with practical applications to improve productivity and conserve genetic resources.</p>
+</div>
+
+<div id="skills" class="content">
     <h2>Skills</h2>
-    <ul class="skills-list">
-        <li>Molecular genetic techniques (PCR, SNP, RFLP, etc.)</li>
-        <li>Bioinformatics and GWAS workflows</li>
-        <li>Statistical analysis (SAS, SPSS, R programming)</li>
-        <li>Project management and scientific supervision</li>
-        <li>Research publication and technical writing</li>
+    <ul>
+        <li>Molecular genetic techniques (PCR, RFLP, SNP, etc.)</li>
+        <li>Bioinformatics workflows (GWAS, phylogenetics, protein modeling)</li>
+        <li>Statistical analysis using SAS, SPSS, and R</li>
+        <li>Project management and mentorship</li>
+        <li>Scientific writing and publishing</li>
     </ul>
-</section>
+</div>
 
-<section id="projects">
-    <h2>Key Projects</h2>
-    <ul class="projects-list">
-        <li>DNA Methylation and Ovulation Rate in Goats (2019-2022)</li>
-        <li>Candidate Genes and Economic Traits in Buffaloes (2022-2024)</li>
-        <li>Submitted multiple DNA sequences to GenBank, contributing to livestock genetic databases</li>
-    </ul>
-</section>
+<div id="projects" class="content">
+    <h2>Projects</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>DNA Methylation and Ovulation Rate in Goats</td>
+                <td>Exploring DNA methylation’s association with ovulation rates in goats, funded by STDF.</td>
+                <td>2019-2022</td>
+            </tr>
+            <tr>
+                <td>Candidate Genes and Economic Traits in Buffaloes</td>
+                <td>Identifying candidate genes influencing buffalo traits in collaboration with Kyoto University.</td>
+                <td>2022-2024</td>
+            </tr>
+        </tbody>
+    </table>
 
-<section id="contact">
+    <h2>Publications</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Journal</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Allele mining in prolactin receptor gene and its association with economic traits in goats</td>
+                <td>Animal Biotechnology</td>
+                <td>2023</td>
+            </tr>
+            <tr>
+                <td>Polymorphism detection in alpha-lactalbumin gene in Egyptian goats</td>
+                <td>Pakistan Journal of Zoology</td>
+                <td>2022</td>
+            </tr>
+            <tr>
+                <td>Genetic analysis of prolificacy and milk traits in Zaraibi goats</td>
+                <td>Animal Biotechnology</td>
+                <td>2022</td>
+            </tr>
+            <tr>
+                <td>DNA methylation profile associated with fertility traits in goats</td>
+                <td>Advances in Animal and Veterinary Science</td>
+                <td>2022</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="contact" class="content">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:amira.nowier@arc.sci.eg">amira.nowier@arc.sci.eg</a></p>
     <p>Phone: +2 01001996915</p>
     <p>ORCID: <a href="https://orcid.org/0000-0001-6801-9291" target="_blank">0000-0001-6801-9291</a></p>
-</section>
+</div>
 
 <footer>
     <p>&copy; 2025 Amira Nowier. All Rights Reserved.</p>
+    <p>Connect with me: <a href="https://orcid.org/0000-0001-6801-9291" target="_blank">ORCID Profile</a></p>
 </footer>
 
 </body>
